@@ -8,6 +8,26 @@ scale=1.0">
 
 </head>
 <body>
-<h1>Per ora funziona tutto!</h1>
-</body>
+    <!-- se la lista contiene elementi, li mostra in un elenco -->
+    {% if lista %}
+    <ul>
+    <!-- itera sugli elementi della lista e li visualizza -->
+    {% for elemento in lista %}
+    <li>
+    {{ elemento }} <!-- visualizza l'elemento -->
+    </li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <!-- messaggio se la lista è vuota -->
+    <p>La lista è vuota.</p>
+    {% endif %}
+    <!-- form per aggiungere un elemento alla lista -->
+<form action="/aggiungi" method="POST">
+    <input type="text" name="elemento" placeholder="Aggiungi un elemento"
+    required>
+    <button type="submit">Aggiungi</button>
+    </form>
+    </body>
+
 </html>

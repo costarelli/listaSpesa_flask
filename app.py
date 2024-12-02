@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 #inizializza l'app Flask
 app = Flask(__name__)
 #rotta principale
@@ -6,9 +6,7 @@ lista_spesa=[]
 @app.route('/')
 def home():
     return render_template('index.html',lista=lista_spesa)
-#avvio dell'app Flask
-if __name__ == '__main__':
-    app.run(debug=True)
+
 
 @app.route('/aggiungi', methods=['POST'])
 def aggiungi():
@@ -18,3 +16,10 @@ def aggiungi():
     if elemento:
         lista_spesa.append(elemento)
     return redirect(url_for('home'))
+
+
+
+
+#avvio dell'app Flask
+if __name__ == '__main__':
+    app.run(debug=True)
